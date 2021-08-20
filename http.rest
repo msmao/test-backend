@@ -1,5 +1,11 @@
 
 
-### test
+### api/users
 curl http://127.0.0.1:7001/api/users
 
+
+### /api/users/:id
+curl http://127.0.0.1:7001/api/users/611ee12a05b6234c6c40a4ad
+
+### /api/users/relation
+curl http://127.0.0.1:7001/api/users/relation?type=following
