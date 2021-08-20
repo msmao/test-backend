@@ -23,17 +23,27 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1629204034131_9325';
 
   // add your middleware config here
-  config.middleware = [];
+  config.middleware = [ 'user' ];
 
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
 
-    view: {
-      mapping: {
-        '.html': 'nunjucks',
+    // view: {
+    //   mapping: {
+    //     '.html': 'nunjucks',
+    //   },
+    //   defaultViewEngine: "nunjucks",
+    // },
+
+    security: {
+      csrf: {
+        enable: false,
       },
-      defaultViewEngine: "nunjucks",
+      xframe: {
+        enable: false,
+      },
+      domainWhiteList: ['*'],
     },
 
     mongoose: {
@@ -48,6 +58,13 @@ module.exports = appInfo => {
         // mongoose global plugins, expected a function or an array of function and options
         // plugins: [createdPlugin, [updatedPlugin, pluginOptions]],
       },
+    },
+
+    passportGithub: {
+      key: env.PASSPORT_GITHUB_CLIENT_ID,
+      secret: env.PASSPORT_GITHUB_CLIENT_SECRETS,
+      callbackURL: '/passport/github/callback',
+      // proxy: false,
     },
   };
 

@@ -3,12 +3,41 @@
 const Controller = require('egg').Controller;
 
 class HomeController extends Controller {
-  constructor(ctx) {
-    super(ctx);
-    this.serverRender = require("../public/umi.server");
-  }
+  // constructor(ctx) {
+  //   super(ctx);
+  //   // this.serverRender = require("../public/umi.server");
+  // }
 
   async index() {
+    const ctx = this.ctx;
+
+    if (ctx.isAuthenticated()) {
+      ctx.body = `<div>
+        <h2>${ctx.path}</h2>
+        <hr>
+        Logined user: <img src="${ctx.user.avatar_url}"> ${ctx.user.name} / ${ctx.user.id} | <a href="/logout">Logout</a>
+        <pre><code>${JSON.stringify(ctx.user, null, 2)}</code></pre>
+        <hr>
+        <a href="/">Home</a> | <a href="/user">User</a>
+      </div>`;
+    } else {
+      ctx.session.returnTo = ctx.path;
+      ctx.body = `
+        <div>
+          <h2>${ctx.path}</h2>
+          <hr>
+          Login with
+          <a href="/passport/weibo">Weibo</a> | <a href="/passport/github">Github</a> |
+          <a href="/passport/bitbucket">Bitbucket</a> | <a href="/passport/twitter">Twitter</a> |
+          <a href="/passport/yuque">YuQue 语雀</a>
+          <hr>
+          <a href="/">Home</a> | <a href="/user">User</a>
+        </div>
+      `;
+    }
+  }
+
+  async findex() {
     const { ctx, app } = this;
 
     global.host = `${ctx.request.protocol}://${ctx.request.host}`;

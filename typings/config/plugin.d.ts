@@ -14,8 +14,9 @@ import 'egg-schedule';
 import 'egg-static';
 import 'egg-jsonp';
 import 'egg-view';
-import 'egg-view-assets';
-import 'egg-view-nunjucks';
+import 'egg-passport';
+import 'egg-passport-github';
+import 'egg-cors';
 import 'egg-mongoose';
 import { EggPluginItem } from 'egg';
 declare module 'egg' {
@@ -32,8 +33,9 @@ declare module 'egg' {
     static?: EggPluginItem;
     jsonp?: EggPluginItem;
     view?: EggPluginItem;
-    assets?: EggPluginItem;
-    nunjucks?: EggPluginItem;
+    passport?: EggPluginItem;
+    passportGithub?: EggPluginItem;
+    cors?: EggPluginItem;
     mongoose?: EggPluginItem;
   }
 }

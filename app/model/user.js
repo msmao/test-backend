@@ -3,13 +3,27 @@
 module.exports = app => {
   const mongoose = app.mongoose;
   const userSchema = mongoose.Schema({
-    // '_id': String,
-    // '_index': String,
+    id: String,
     name: String,
     dob: String,
     address: String,
-    description: String,
-    createdAt: { type: Date, default: Date.now },
+    description: String, 
+    avatar_url: {
+      type: String,
+    },
+    blog: {
+      type: String,
+    },
+    location: {
+      type: String,
+    },
+    email: {
+      type: String,
+    },
+    createdAt: {
+      type: Date,
+      default: Date.now
+    },
   });
   return mongoose.model('User', userSchema);
 }

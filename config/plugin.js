@@ -6,14 +6,26 @@ module.exports = {
   // static: {
   //   enable: true,
   // }
-  assets: {
+  passport: {
     enable: true,
-    package: 'egg-view-assets',
+    package: 'egg-passport',
   },
-  nunjucks: {
+  passportGithub: {
     enable: true,
-    package: 'egg-view-nunjucks',
+    package: 'egg-passport-github',
   },
+  cors: {
+    enable: true,
+    package: "egg-cors"
+  },
+  // assets: {
+  //   enable: true,
+  //   package: 'egg-view-assets',
+  // },
+  // nunjucks: {
+  //   enable: true,
+  //   package: 'egg-view-nunjucks',
+  // },
   mongoose: {
     enable: true,
     package: 'egg-mongoose',
