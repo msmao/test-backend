@@ -4,6 +4,11 @@ const Controller = require('egg').Controller;
 
 class HomeController extends Controller {
 
+  async healthy() {
+    const { ctx, app } = this;
+    ctx.body = { status: 'ok' };
+  }
+
   async index() {
     const { ctx, app } = this;
 

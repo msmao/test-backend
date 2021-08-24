@@ -9,3 +9,22 @@ curl http://127.0.0.1:7001/api/users/611ee12a05b6234c6c40a4ad
 
 ### /api/users/relation
 curl http://127.0.0.1:7001/api/users/relation?type=following
+
+
+###
+curl 'http://localhost:8000/api/users?current=1&pageSize=20&name=%E5%93%88%E5%93%882&sorter=%7B%7D&filter=%7B%7D' \
+  -H 'Connection: keep-alive' \
+  -H 'Pragma: no-cache' \
+  -H 'Cache-Control: no-cache' \
+  -H 'sec-ch-ua: "Chromium";v="92", " Not A;Brand";v="99", "Google Chrome";v="92"' \
+  -H 'DNT: 1' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36' \
+  -H 'Accept: */*' \
+  -H 'Sec-Fetch-Site: same-origin' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Referer: http://localhost:8000/' \
+  -H 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,ja;q=0.7,zh-TW;q=0.6' \
+  -H 'Cookie: connect.sid=s%3Akh2L89_u1hHfEu6aPgZj4RpxkoCOIBgH.eDGQNs%2B3SNVJ9kWjVNCswLv8pH0r7mhb%2FEi8zEWymVU; umi_locale=zh-CN; csrfToken=rm3q8iLOab3I2YPZ2Px68aUs' \
+  --compressed
