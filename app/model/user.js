@@ -15,7 +15,8 @@ module.exports = app => {
       type: String,
     },
     location: {
-      type: String,
+      type: { type: String, enum: "Point", default: "Point" },
+      coordinates: { type: [Number], default: [0, 0] },
     },
     email: {
       type: String,
@@ -25,5 +26,8 @@ module.exports = app => {
       default: Date.now
     },
   });
+
+  userSchema.indexes({ location: '2dsphere' })
+
   return mongoose.model('User', userSchema);
 }

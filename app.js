@@ -48,14 +48,12 @@ class AppBootHook {
       assert(user.provider, 'user.provider should exists');
       assert(user.id, 'user.id should exists');
 
-      console.log('verify:', user);
-
       // 从数据库中查找用户信息
       const auth = await ctx.model.Authorization.findOne({
         uid: user.id,
         provider: user.provider,
       });
-      console.log('verify.auth:', auth);
+
       if (auth && auth.user_id) {
         const existsUser = await ctx.model.User.findOne({ id: auth.user_id });
         if (existsUser) {
@@ -71,7 +69,6 @@ class AppBootHook {
     app.passport.serializeUser(async (ctx, user) => {
       // 处理 user
       // ...
-      console.log('serializeUser:', user);
       return user;
     });
 
@@ -79,7 +76,6 @@ class AppBootHook {
     app.passport.deserializeUser(async (ctx, user) => {
       // 处理 user
       // ...
-      console.log('deserializeUser:', user);
       return user;
     });
 
@@ -91,9 +87,9 @@ class AppBootHook {
     // http / https server 已启动，开始接受外部请求
     // 此时可以从 app.server 拿到 server 的实例
 
-    this.app.server.on('timeout', socket => {
-      // handle socket timeout
-    });
+    // this.app.server.on('timeout', socket => {
+    //   // handle socket timeout
+    // });
   }
 }
 

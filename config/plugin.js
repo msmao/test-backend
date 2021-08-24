@@ -18,14 +18,14 @@ module.exports = {
     enable: true,
     package: "egg-cors"
   },
-  // assets: {
-  //   enable: true,
-  //   package: 'egg-view-assets',
-  // },
-  // nunjucks: {
-  //   enable: true,
-  //   package: 'egg-view-nunjucks',
-  // },
+  assets: {
+    enable: true,
+    package: 'egg-view-assets',
+  },
+  nunjucks: {
+    enable: true,
+    package: 'egg-view-nunjucks',
+  },
   mongoose: {
     enable: true,
     package: 'egg-mongoose',

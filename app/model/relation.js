@@ -3,8 +3,6 @@
 module.exports = app => {
   const mongoose = app.mongoose;
   const relationSchema = mongoose.Schema({
-    // _id: mongoose.Schema.Types.ObjectId,
-    // '_index': String,
     owner: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',

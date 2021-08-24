@@ -26,13 +26,18 @@
     "egg-ci": "^1.11.0",
     "egg-mock": "^3.21.0",
     "eslint": "^5.13.0",
-    "eslint-config-egg": "^7.1.0"
+    "eslint-config-egg": "^7.1.0",
+    "@umijs/preset-react": "^1.8.14",
+    "react": "^16.6.0",
+    "react-dom": "17.x",
+    "react-sticky": "^6.0.3",
+    "umi": "^3.5.0"
   },
   "engines": {
     "node": ">=10.0.0"
   },
   "scripts": {
-    "start": "egg-scripts start --daemon --title=egg-server-wiredcraft",
+    "start": "egg-scripts start --title=egg-server-wiredcraft",
     "stop": "egg-scripts stop --title=egg-server-wiredcraft",
     "dev": "egg-bin dev",
     "debug": "egg-bin debug",

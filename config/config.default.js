@@ -2,6 +2,7 @@
 
 'use strict';
 
+const path = require('path');
 const argv = require('yargs').argv;
 require('dotenv').config({
   path: argv.env,
@@ -23,18 +24,31 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1629204034131_9325';
 
   // add your middleware config here
-  config.middleware = [ 'user' ];
+  config.middleware = [ 'log' ];
 
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
 
-    // view: {
-    //   mapping: {
-    //     '.html': 'nunjucks',
-    //   },
-    //   defaultViewEngine: "nunjucks",
-    // },
+    logger: {
+      // outputJSON: true,
+      // level: 'INFO',
+      consoleLevel: 'DEBUG',
+      disableConsoleAfterReady: false,
+      log: {
+        formatter: (message) => {
+          return `${message.time}${message.processid}`
+        }
+      }
+    },
+
+    view: {
+      root: path.join(appInfo.baseDir, 'app/public'),
+      mapping: {
+        '.html': 'nunjucks',
+      },
+      defaultViewEngine: "nunjucks",
+    },
 
     security: {
       csrf: {
@@ -63,7 +77,7 @@ module.exports = appInfo => {
     passportGithub: {
       key: env.PASSPORT_GITHUB_CLIENT_ID,
       secret: env.PASSPORT_GITHUB_CLIENT_SECRETS,
-      callbackURL: '/passport/github/callback',
+      callbackURL: 'https://demo.msmao.com/wiredcraft/passport/github/callback',
       // proxy: false,
     },
   };

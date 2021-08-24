@@ -6,15 +6,12 @@ class UserController extends Controller {
 
   async index() {
     const { ctx } = this;
-    const result = await this.service.user.list();
+    const { name } = ctx.query;
+    const condition = {};
+    if (name) Object.assign(condition, { name });
+    const result = await this.service.user.list(condition);
     ctx.body = result;
-  }
-
-  async view() {
-    const { ctx } = this;
-    const id = ctx.params.id;
-    const result = await this.service.user.view(id);
-    ctx.body = result;
+    // ctx.body = { status: 'ok', data: result };
   }
 
   async create() {
@@ -35,7 +32,6 @@ class UserController extends Controller {
   async delete() {
     const { ctx } = this;
     const id = ctx.params.id;
-    console.log('id:', id);
     const result = await this.service.user.delete(id);
     ctx.body = { status: 'ok', data: result };
   }
@@ -64,13 +60,6 @@ class UserController extends Controller {
     ctx.body = { status: 'ok', data: result };
   }
 
-  // 搜索附件的人
-  async search() {
-    const { ctx } = this;
-    const username = ctx.query.username;
-    const result = await this.service.user.nearby(username);
-    ctx.body = result;
-  }
 }
 
 module.exports = UserController;

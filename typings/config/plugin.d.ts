@@ -17,6 +17,8 @@ import 'egg-view';
 import 'egg-passport';
 import 'egg-passport-github';
 import 'egg-cors';
+import 'egg-view-assets';
+import 'egg-view-nunjucks';
 import 'egg-mongoose';
 import { EggPluginItem } from 'egg';
 declare module 'egg' {
@@ -36,6 +38,8 @@ declare module 'egg' {
     passport?: EggPluginItem;
     passportGithub?: EggPluginItem;
     cors?: EggPluginItem;
+    assets?: EggPluginItem;
+    nunjucks?: EggPluginItem;
     mongoose?: EggPluginItem;
   }
 }

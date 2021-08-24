@@ -2,10 +2,10 @@
 // Do not modify this file!!!!!!!!!
 
 import 'egg';
-import ExportUser = require('../../../app/middleware/user');
+import ExportLog = require('../../../app/middleware/log');
 
 declare module 'egg' {
   interface IMiddleware {
-    user: typeof ExportUser;
+    log: typeof ExportLog;
   }
 }
