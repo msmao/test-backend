@@ -1,10 +1,10 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Link } from 'umi';
+import { Link, history } from 'umi';
 
 import ProTable from '@ant-design/pro-table';
 import { PageContainer } from '@ant-design/pro-layout';
-import { PlusOutlined } from '@ant-design/icons';
+import { PlusOutlined, TeamOutlined } from '@ant-design/icons';
 import { Image, Button, Divider, Modal } from 'antd';
 
 import ProTableFormModal from '@/components/ProTableFormModal';
@@ -56,13 +56,6 @@ export default function Page() {
       initialValue: formValues.dob,
     },
     {
-      title: 'address',
-      dataIndex: 'address',
-      sorter: true,
-      hideInSearch: true,
-      initialValue: formValues.address,
-    },
-    {
       title: 'description',
       dataIndex: 'description',
       sorter: true,
@@ -70,19 +63,35 @@ export default function Page() {
       initialValue: formValues.description,
     },
     {
-      title: 'email',
-      dataIndex: 'email',
+      title: 'address',
+      dataIndex: 'address',
       sorter: true,
-      hideInForm: true,
       hideInSearch: true,
-      initialValue: formValues.email,
+      initialValue: formValues.address,
     },
     {
       title: 'location',
       dataIndex: 'location',
       sorter: true,
       hideInSearch: true,
+      initialValue: formValues.location ? formValues.location.coordinates.join(',') : '',
+      render: (_, r) => {
+        return (
+          r.location && r.location.coordinates ? r.location.coordinates.join(',') : ''
+        )
+      },
+    },
+    {
+      title: 'calculated',
+      dataIndex: 'calculated',
+      sorter: true,
+      hideInSearch: true,
       hideInForm: true,
+      render: (_, r) => {
+        return (
+          r.distance && r.distance.calculated
+        )
+      },
     },
     {
       title: 'create_time',
@@ -93,24 +102,37 @@ export default function Page() {
       hideInSearch: true,
     },
     {
-      title: 'blog',
-      dataIndex: 'blog',
+      title: 'relation.is_mutual',
+      dataIndex: 'relation.is_mutual',
       sorter: true,
       hideInForm: true,
       hideInSearch: true,
-      initialValue: formValues.blog,
-    },
-    {
-      title: 'avatar_url',
-      dataIndex: 'avatar_url',
-      hideInForm: true,
-      hideInSearch: true,
       render: (_, r) => {
+        let mutual;
+        if (r.relation) mutual = r.relation.is_mutual ? '已互相关注，' : '已关注，'
         return (
-          r.avatar_url ? <Image width={80} src={r.avatar_url} /> : ''
+          <a
+            onClick={async () => {
+              await handleFollowOrCannel(r);
+              actionRef.current.reload();
+            }}
+          >
+            {r.relation ? `${mutual}取消` : ''}关注
+          </a>
         )
       }
     },
+    // {
+    //   title: 'avatar_url',
+    //   dataIndex: 'avatar_url',
+    //   hideInForm: true,
+    //   hideInSearch: true,
+    //   render: (_, r) => {
+    //     return (
+    //       r.avatar_url ? <Image width={80} src={r.avatar_url} /> : ''
+    //     )
+    //   }
+    // },
     {
       title: 'option',
       dataIndex: 'option',
@@ -140,15 +162,6 @@ export default function Page() {
               }
             });
           }}>删除</a>
-          <Divider type="vertical" />
-          <a
-            onClick={async () => {
-              await handleFollowOrCannel(record);
-              actionRef.current.reload();
-            }}
-          >
-            关注
-          </a>
         </>
       ),
     },
@@ -156,12 +169,18 @@ export default function Page() {
 
   return (
     <PageContainer >
-      <h1>Users</h1>
+      <h1>Users Page</h1>
       <ProTable
         rowKey="_id"
         actionRef={actionRef}
         search={true}
         toolBarRender={() => [
+          <Button type="primary" onClick={() => {
+            history.push('/friends');
+          }
+          }>
+            <TeamOutlined /> Friends List
+          </Button>,
           <Button type="primary" onClick={() => {
             handleModalVisible(true);
             setFormValues({});

@@ -1,14 +1,14 @@
 import { defineConfig } from 'umi';
 
 const BASE_URL = process.env.NODE_ENV === 'production' ? 'https://demo.msmao.com/' : `http://localhost:8000`;
-const PUBLIC_PATH = process.env.NODE_ENV === 'production' ? 'https://msmaocom.oss-cn-hangzhou.aliyuncs.com/web/' : `http://localhost:8000/`;
+const PUBLIC_PATH = process.env.NODE_ENV === 'production' ? 'https://demo.msmao.com/public/' : `http://localhost:8000/`;
 
 export default defineConfig({
   nodeModulesTransform: {
     type: 'none',
   },
   routes: [
-    { path: '/', component: '@/pages/home/index' },
+    { path: '/', component: '@/pages/users/index' },
     { path: '/users', component: '@/pages/users/index' },
     { path: '/friends', component: '@/pages/friends/index' },
   ],
@@ -17,6 +17,13 @@ export default defineConfig({
   },
   hash: true,
   history: { type: 'hash' },
+  publicPath: PUBLIC_PATH,
+  outputPath: '../app/public',
+  manifest: {
+    fileName: '../../config/manifest.json',
+    publicPath: '', // 为 ''，不然会有两个 /
+  },
+
   // routes: [
   //   { path: '/login', component: 'login' },
   //   {
@@ -34,7 +41,7 @@ export default defineConfig({
   // ],
 
   fastRefresh: {},
-  mfsu: {},
+  // mfsu: {},
   proxy: {
     '/api/': {
       target: 'http://localhost:7001',

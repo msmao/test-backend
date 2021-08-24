@@ -1,10 +1,10 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Link } from 'umi';
+import { Link, history } from 'umi';
 
 import ProTable from '@ant-design/pro-table';
 import { PageContainer } from '@ant-design/pro-layout';
-import { PlusOutlined } from '@ant-design/icons';
+import { PlusOutlined, UserOutlined } from '@ant-design/icons';
 import { Image, Button, Badge } from 'antd';
 
 import { ProColumns } from '@ant-design/pro-table';
@@ -63,7 +63,7 @@ export default function Page() {
               actionRef.current.reload();
             }}
           >
-            { activeKey === 'followers' ? 'follow' : 'unfollow' }
+            { activeKey === 'followers' ? '关注' : '取消关注' }
           </a>
         </>
       ),
@@ -115,9 +115,14 @@ export default function Page() {
               actionRef.current.reload();
             },
           },
-          // actions: [
-          //   <Button key="primary" type="primary"></Button>,
-          // ],
+          actions: [
+            <Button type="primary" onClick={() => {
+              history.push('/users');
+            }
+            }>
+              <UserOutlined /> Users List
+            </Button>,
+          ],
         }}
         request={async (params, sorter, filter) => {
           Object.assign(params, { type: activeKey })
