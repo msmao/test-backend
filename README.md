@@ -90,6 +90,7 @@ db.getCollection('users').createIndex({location: '2dsphere'})
 
 用户姓名搜索附近朋友接口查看[文档](doc/API.md)
 
+因 friends 类型的测试数据少，建议检索 “越剑” 返回最近好友数据
 
 ### 1.6 单元测试
 
