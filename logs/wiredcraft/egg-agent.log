@@ -1,0 +1,4 @@
+2021-08-24 18:35:58,820 INFO 86815 [egg:logger] init all loggers with options: {"dir":"/Users/jian/Jian/test-backend/logs/wiredcraft","encoding":"utf8","env":"unittest","level":"INFO","consoleLevel":"WARN","disableConsoleAfterReady":false,"outputJSON":false,"buffer":false,"appLogName":"wiredcraft-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{},"allowDebugAtProd":false,"log":{},"type":"agent"}
+2021-08-24 18:35:58,825 INFO 86815 [egg:core] dump config after load, 3ms
+2021-08-24 18:35:58,843 INFO 86815 [egg-watcher:agent] watcher start success
+2021-08-24 18:35:58,848 INFO 86815 [egg:core] dump config after ready, 4ms

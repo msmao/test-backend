@@ -1,0 +1,2 @@
+[2021-08-24 18:35:59.285][86815][/healthy]{"headers":{"host":"127.0.0.1:57340","accept-encoding":"gzip, deflate","user-agent":"node-superagent/3.8.3","connection":"close"},"method":"GET","url":"/healthy","href":"http://127.0.0.1:57340/healthy","path":"/healthy","query":{},"params":{},"host":"127.0.0.1:57340","hostname":"127.0.0.1","protocol":"http","ip":"127.0.0.1","ips":[],"body":{}}
+

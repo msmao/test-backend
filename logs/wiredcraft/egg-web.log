@@ -1,0 +1,16 @@
+2021-08-24 18:35:58,938 INFO 86815 [egg:logger] init all loggers with options: {"dir":"/Users/jian/Jian/test-backend/logs/wiredcraft","encoding":"utf8","env":"unittest","level":"INFO","consoleLevel":"WARN","disableConsoleAfterReady":false,"outputJSON":false,"buffer":false,"appLogName":"wiredcraft-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{},"allowDebugAtProd":false,"log":{},"type":"application"}
+2021-08-24 18:35:58,945 INFO 86815 [egg-multipart] stream mode enable
+2021-08-24 18:35:59,157 INFO 86815 [egg-mongoose] connecting mongodb://127.0.0.1:27017/wiredcraft
+2021-08-24 18:35:59,218 INFO 86815 [egg-static] starting static serve /public/ -> /Users/jian/Jian/test-backend/app/public
+2021-08-24 18:35:59,219 INFO 86815 [egg-security] use methodnoallow middleware
+2021-08-24 18:35:59,220 INFO 86815 [egg-security] use noopen middleware
+2021-08-24 18:35:59,220 INFO 86815 [egg-security] use nosniff middleware
+2021-08-24 18:35:59,220 INFO 86815 [egg-security] use xssProtection middleware
+2021-08-24 18:35:59,221 INFO 86815 [egg-security] use dta middleware
+2021-08-24 18:35:59,221 INFO 86815 [egg-security] compose 5 middlewares into one security middleware
+2021-08-24 18:35:59,227 INFO 86815 [egg:core] dump config after load, 2ms
+2021-08-24 18:35:59,228 INFO 86815 [egg-mongoose] starting...
+2021-08-24 18:35:59,252 INFO 86815 [egg-mongoose] mongodb://127.0.0.1:27017/wiredcraft connected successfully
+2021-08-24 18:35:59,253 INFO 86815 [egg-mongoose] instance[0] start successfully
+2021-08-24 18:35:59,257 INFO 86815 [egg-watcher:application] watcher start success
+2021-08-24 18:35:59,261 INFO 86815 [egg:core] dump config after ready, 3ms
